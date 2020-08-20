@@ -12,7 +12,7 @@
 
 ### Association
 - has_many :items
-- has_many :items_transaction
+- has_many :item_transactions
 
 
 ## Itemsテーブル
