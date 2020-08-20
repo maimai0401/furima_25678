@@ -3,14 +3,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string｜null: false|
-|mail|text|null: false|
-|password|integer｜null: false|
-|confirmation_password|integer｜null: false|
 |first_name|string｜null: false|
 |last_name|string｜null: false|
 |first_name_kana|string｜null: false|
 |last_name_kana|string｜null: false|
-|birthday|integer｜null: false|
+|birthday|date｜null: false|
 
 
 ### Association
@@ -22,14 +19,13 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|itemname|string|null: false|
-|image|string|null: false|
+|name|string|null: false|
 |explanation|text|null: false|
-|category|integer|null: false|
-|status|integer|null: false|
-|postage|integer｜null: false|
-|shipping_area|integer|null: false|
-|days|integer｜null: false|
+|category_id|integer|null: false|
+|status_id|integer|null: false|
+|postage_id|integer｜null: false|
+|shipping_area_id|integer|null: false|
+|days_id|integer｜null: false|
 |price|integer｜null: false|
 |user_id|integer|null: false|foreign_key: true|
 
@@ -43,12 +39,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|integer｜null: false|
-|prefectures|integer|null: false|
+|postal_code|string｜null: false|
+|prefectures_id|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building_name|string|
-|tel|integer｜null: false|
+|tel|string｜null: false|
 |item_transaction_id|integer|foreign_key: true|
 
 
@@ -61,10 +57,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|foreign_key: true|
-|user_id|integer|foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
 - belongs_to :user
-- has_one :adress
+- has_one :address
