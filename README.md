@@ -32,10 +32,10 @@
 
 ### Association
 - belongs_to :user
-- has_one :item_transaction
+- has_one :item_transactions
 
 
-## Addressテーブル
+## Addressesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -53,7 +53,7 @@
 - belongs_to :item_transaction
 
 
-## ItemTransactionテーブル
+## ItemTransactionsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
