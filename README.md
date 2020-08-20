@@ -27,12 +27,12 @@
 |prefecture_id|integer|null: false|
 |days_id|integer｜null: false|
 |price|integer｜null: false|
-|user_id|integer|null: false|foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 
 ### Association
 - belongs_to :user
-- has_one :item_transactions
+- has_one :item_transaction
 
 
 ## Addressesテーブル
@@ -45,7 +45,7 @@
 |address|string|null: false|
 |building_name|string|
 |tel|string｜null: false|
-|item_transaction_id|integer|foreign_key: true|
+|item_transaction|references|null: false,foreign_key: true|
 
 
 
@@ -57,8 +57,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
