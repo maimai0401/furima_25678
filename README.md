@@ -1,24 +1,70 @@
-# README
+## Usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string｜null: false|
+|mail|text|null: false|
+|password|integer｜null: false|
+|confirmation_password|integer｜null: false|
+|first_name|string｜null: false|
+|last_name|string｜null: false|
+|first_name_kana|string｜null: false|
+|last_name_kana|string｜null: false|
+|birthday|integer｜null: false|
 
-Things you may want to cover:
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :items_transaction
 
-* System dependencies
 
-* Configuration
+## Itemsテーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|itemname|string|null: false|
+|image|string|null: false|
+|explanation|text|null: false|
+|category|integer|null: false|
+|status|integer|null: false|
+|postage|integer｜null: false|
+|shipping_area|integer|null: false|
+|days|integer｜null: false|
+|price|integer｜null: false|
+|user_id|integer|null: false|foreign_key: true|
 
-* Database initialization
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- has_one :item_transaction
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Addressテーブル
 
-* ...
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|integer｜null: false|
+|prefectures|integer|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building_name|string|
+|tel|integer｜null: false|
+|item_transaction_id|integer|foreign_key: true|
+
+
+
+### Association
+- belongs_to :item_transaction
+
+
+## ItemTransactionテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|item_id|integer|foreign_key: true|
+|user_id|integer|foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :user
+- has_one :adress
