@@ -19,6 +19,54 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
 
+      it 'first_nameが空では登録できないこと' do
+        @user.first_name = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+
+      it 'last_nameが空では登録できないこと' do
+        @user.last_name = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+
+      it 'first_name_kanaが空では登録できないこと' do
+        @user.first_name_kana = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana can't be blank")
+      end
+
+      it 'last_name_kanaが空では登録できないこと' do
+        @user.last_name_kana = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+      end
+
+      it 'first_nameが半角だと登録できないこと' do
+        @user.first_name = "satou"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+
+      it 'last_nameが半角だと登録できないこと' do
+        @user.last_name = "itou"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+
+      it 'first_name_kanaが半角だと登録できないこと' do
+        @user.first_name = "test"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+
+      it 'last_name_kanaが半角だと登録できないこと' do
+        @user.last_name = "yayoiken"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+
       it 'emailが空では登録できないこと' do
         @user.email = nil
         @user.valid?
@@ -61,7 +109,7 @@ RSpec.describe User, type: :model do
       it 'パスワードは半角英数字混合でないと登録できないこと' do
         @user.password = 'testuser'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid')
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
     end
   end
