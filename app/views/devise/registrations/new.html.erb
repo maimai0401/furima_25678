@@ -1,7 +1,7 @@
 <%= render "shared/second-header"%>
 
 
-<%= form_with url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
@@ -78,7 +78,7 @@
     <div class='input-birth-wrap'>
       <%= raw sprintf(
                   f.date_select(
-                    :bithday,
+                    :birthday,
                     class:'select-birth',
                     id:"birth-date",
                     use_month_numbers: true,

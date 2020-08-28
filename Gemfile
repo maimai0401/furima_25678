@@ -61,3 +61,5 @@ end
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'pry-rails'
