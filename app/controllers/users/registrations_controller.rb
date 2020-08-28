@@ -12,9 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     # binding.pry
-  #   build_resource(sign_up_params)
-  #   @user.save! unless @user.valid?
-    
+    #   build_resource(sign_up_params)
+    #   @user.save! unless @user.valid?
+
     super
   end
 
