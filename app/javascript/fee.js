@@ -1,7 +1,6 @@
 function fee (){
   const price_field = document.getElementById("item-price");
   price_field.addEventListener("keyup", function() {
-    // console.log(this)
     let price = this.value;
     let fee = (price / 10); //販売手数料
     let profit = (price - fee); //売買利益

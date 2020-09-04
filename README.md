@@ -1,4 +1,4 @@
-name## Usersテーブル
+## Usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
