@@ -44,27 +44,27 @@ RSpec.describe User, type: :model do
       end
 
       it 'first_nameが半角だと登録できないこと' do
-        @user.first_name = "satou"
+        @user.first_name = 'satou'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
 
       it 'last_nameが半角だと登録できないこと' do
-        @user.last_name = "itou"
+        @user.last_name = 'itou'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
+        expect(@user.errors.full_messages).to include('Last name is invalid')
       end
 
       it 'first_name_kanaが半角だと登録できないこと' do
-        @user.first_name = "test"
+        @user.first_name = 'test'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
 
       it 'last_name_kanaが半角だと登録できないこと' do
-        @user.last_name = "yayoiken"
+        @user.last_name = 'yayoiken'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
+        expect(@user.errors.full_messages).to include('Last name is invalid')
       end
 
       it 'emailが空では登録できないこと' do
