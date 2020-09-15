@@ -31,14 +31,14 @@ class TransactionsController < ApplicationController
       :postal_code,
       :prefecture_id,
       :city,
-      :addresses,
+      :address,
       :building_name,
       :tel
     ).merge(user_id: current_user.id)
   end
 
   def pay_item
-    Payjp.api_key = ENV['PAYJP_SK']
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: item_transaction_params[:token],
