@@ -10,8 +10,8 @@ class TransactionsController < ApplicationController
 
   def create
     @item_transaction = PayForm.new(item_transaction_params)
-    if @item_transaction.valid?
-      pay_item
+    if @item_transaction.valid? #正常にデータベースに保存できるかどうかを確認
+      pay_item ##valid?でtrueが返されたら「pay_item」が起動
       @item_transaction.save
       return redirect_to root_path
     end
