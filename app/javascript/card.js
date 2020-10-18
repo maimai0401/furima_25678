@@ -17,7 +17,9 @@ const pay = () => {
     console.log(card)
 
     Payjp.createToken(card, (status, response) => {
-      console.log(card)
+      //Payjp.createTokenはgemをインストールしてるから使えるメソッド
+      //cardを受け取りstatusとresponseを受け取る
+      console.log(response.error)
 
       if (status == 200) {
         const token = response.id;
