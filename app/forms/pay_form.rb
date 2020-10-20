@@ -16,7 +16,7 @@ class PayForm
   end
 
   def save
-    item_transaction = ItemTransaction.create!(
+    item_transaction = ItemTransaction.create(
       item_id: item_id,
       user_id: user_id
     )
