@@ -126,13 +126,21 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists' >
 
+    <%# if !(@items.blank?)(別解) %>
 
     <% if @items.present? %>
       <% @items.each do |item| %>
         <li class='list'>
           <%= link_to item_path(item) do %>
             <div class='item-img-content'>
-              <%= image_tag item.image, class: "item-img" if item.image.attached?%>
+              <% item.images.each do |image| %>
+                <%= image_tag image, class: 'item-img' %>
+              <% end %>
+
+              <%# <%= image_tag item.images, class: 'item-img' %>
+
+              <%# image_tag item.images, class: "item-img" if item.images.attached?%>
+              <%# if item.order.present? %><%# でもOK %>
               <% if item.item_transaction != nil %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
@@ -155,6 +163,9 @@
       <% end %>
     <% else %>
       <%# 商品がない場合のダミー %>
+
+            <%# unless @items.present?(別解) %>
+zzz
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>

@@ -10,16 +10,19 @@ class PayForm
     validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
     validates :city
     validates :address
-    validates :tel, length: { maximum: 11, message: 'Too long' }
+    validates :tel, numericality: { only_integer: true }
+
+    # validates :tel, length: { maximum: 11, message: 'Too long' }
     # 電話番号は入力フォームで制限してますが、一応つけています。
     validates :user_id
   end
 
   def save
-    item_transaction = ItemTransaction.create!(
+    item_transaction = ItemTransaction.create(
       item_id: item_id,
       user_id: user_id
     )
+    # キーがテーブルのカラムでバリューがattr_accessorde受け取ったやつ
     Address.create(
       postal_code: postal_code,
       prefecture_id: prefecture_id,
