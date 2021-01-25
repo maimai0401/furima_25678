@@ -1,4 +1,8 @@
 <%= render "shared/header" %>
+<% breadcrumb :item_show , @item%>
+<%= breadcrumbs separator: " &rsaquo; " %>   
+
+
 
 <%# 商品の概要 %>
 <div class="item-show">
@@ -7,7 +11,11 @@
       <%= @item.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @item.image,class:"item-box-img" %>
+      <% @item.images.each do |image| %>
+        <%= image_tag image, class:'item-box-img' %>
+      <% end %>
+
+      <%# <%= image_tag @item.images,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outの表示をしましょう。 %>
         <% if @item.item_transaction != nil %>
           <div class='sold-out'>
@@ -29,12 +37,9 @@
       <%= link_to '商品の編集', edit_item_path, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
-    <% end %>
-    <% if user_signed_in? && current_user.id != @item.user_id %>
+    <% elsif user_signed_in? %>
       <%# 商品が売れていない場合はこちらを表示しましょう %>
-      <% if @item.item_transaction == nil %>
-        <%= link_to '購入画面に進む', item_transactions_path(@item) ,class:"item-red-btn"%>
-      <% end %>
+        <%= link_to '購入画面に進む', item_transactions_path(@item.id) ,class:"item-red-btn"%>
       <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
 

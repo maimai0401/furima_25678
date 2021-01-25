@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
       @item_transaction.save
       return redirect_to root_path
     end
-    render 'index'
+      render 'index'
   end
 
   private
